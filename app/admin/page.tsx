@@ -82,12 +82,12 @@ export default async function AdminPage({
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Link
+            <a
               className="inline-flex items-center justify-center rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-700 transition hover:bg-brand-50"
               href={exportHref}
             >
               Export CSV
-            </Link>
+            </a>
             <form action="/api/admin/logout" method="post">
               <button
                 className="inline-flex w-full items-center justify-center rounded-full bg-lake px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
