@@ -116,7 +116,7 @@ export default async function AdminPage({
 
         <div className="mt-6 flex items-center justify-between text-sm text-slate-600">
           <p>{registrations.length} registration(s) shown</p>
-          {search ? <p>Filtered by: "{search}"</p> : <p>Showing all registrations</p>}
+          {search ? <p>Filtered by: &quot;{search}&quot;</p> : <p>Showing all registrations</p>}
         </div>
 
         <div className="mt-6 overflow-hidden rounded-[1.5rem] border border-brand-100">
