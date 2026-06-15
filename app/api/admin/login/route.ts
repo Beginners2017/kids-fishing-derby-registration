@@ -7,10 +7,10 @@ export async function POST(request: Request) {
   const accessKey = String(formData.get("accessKey") ?? "").trim();
 
   if (!isValidAdminAccessKey(accessKey)) {
-    return NextResponse.redirect(new URL("/admin?error=invalid_access_code", request.url), 303);
+    return NextResponse.redirect("/admin?error=invalid_access_code", 303);
   }
 
-  const response = NextResponse.redirect(new URL("/admin", request.url), 303);
+  const response = NextResponse.redirect("/admin", 303);
   response.cookies.set({
     name: ADMIN_COOKIE_NAME,
     value: accessKey,
