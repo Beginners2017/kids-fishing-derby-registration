@@ -51,3 +51,13 @@ export async function listRegistrations(search: string) {
 
   return data ?? [];
 }
+
+export async function deleteRegistration(id: string) {
+  const supabase = createSupabaseAdminClient();
+
+  const { error } = await supabase.from("registrations").delete().eq("id", id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+}

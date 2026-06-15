@@ -124,12 +124,13 @@ export default async function AdminPage({
                   <th className="px-4 py-4">Contact</th>
                   <th className="px-4 py-4">Emergency Contact</th>
                   <th className="px-4 py-4">Notes</th>
+                  <th className="px-4 py-4">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-brand-100 bg-white">
                 {registrations.length === 0 ? (
                   <tr>
-                    <td className="px-4 py-8 text-center text-sm text-slate-500" colSpan={6}>
+                    <td className="px-4 py-8 text-center text-sm text-slate-500" colSpan={7}>
                       No registrations found.
                     </td>
                   </tr>
@@ -158,6 +159,18 @@ export default async function AdminPage({
                       </td>
                       <td className="max-w-xs px-4 py-4 text-slate-600">
                         {registration.notes || "No notes provided"}
+                      </td>
+                      <td className="px-4 py-4">
+                        <form action="/api/admin/delete-registration" method="post">
+                          <input name="id" type="hidden" value={registration.id} />
+                          <input name="q" type="hidden" value={search} />
+                          <button
+                            className="rounded-full border border-red-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-red-700 transition hover:bg-red-50"
+                            type="submit"
+                          >
+                            Delete
+                          </button>
+                        </form>
                       </td>
                     </tr>
                   ))
