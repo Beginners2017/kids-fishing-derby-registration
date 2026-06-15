@@ -1,4 +1,5 @@
 import { RegistrationRecord } from "@/lib/types";
+import { formatRegistrationTimestamp } from "@/lib/dates";
 
 function escapeCsvValue(value: string | number | boolean | null) {
   const safeValue = value == null ? "" : String(value);
@@ -21,10 +22,7 @@ export function registrationsToCsv(registrations: RegistrationRecord[]) {
   ];
 
   const rows = registrations.map((registration) => [
-    new Date(registration.created_at).toLocaleString("en-US", {
-      dateStyle: "medium",
-      timeStyle: "short"
-    }),
+    formatRegistrationTimestamp(registration.created_at),
     registration.parent_full_name,
     registration.child_full_name,
     registration.child_age,

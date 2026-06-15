@@ -1,14 +1,8 @@
 import Link from "next/link";
 import { isAdminAuthenticated } from "@/lib/auth";
 import { BRAND_NAME, EVENT_NAME } from "@/lib/constants";
+import { formatRegistrationTimestamp } from "@/lib/dates";
 import { listRegistrations } from "@/lib/registrations";
-
-function formatSubmittedAt(value: string) {
-  return new Date(value).toLocaleString("en-US", {
-    dateStyle: "medium",
-    timeStyle: "short"
-  });
-}
 
 export default async function AdminPage({
   searchParams
@@ -142,7 +136,9 @@ export default async function AdminPage({
                 ) : (
                   registrations.map((registration) => (
                     <tr className="align-top text-sm text-slate-700" key={registration.id}>
-                      <td className="px-4 py-4">{formatSubmittedAt(registration.created_at)}</td>
+                      <td className="px-4 py-4">
+                        {formatRegistrationTimestamp(registration.created_at)}
+                      </td>
                       <td className="px-4 py-4 font-medium text-lake">
                         {registration.parent_full_name}
                       </td>
